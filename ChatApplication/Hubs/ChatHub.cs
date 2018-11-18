@@ -15,10 +15,16 @@ namespace ChatApplication.Hubs
             return base.OnConnected();
         }
 
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            Clients.All.User(Context.User.Identity.Name + " leaved chat");
+            return base.OnDisconnected(stopCalled);
+        }
+
         public void Send(string message)
         {
-            Clients.Caller.message("You: " + message);
-            Clients.Others.message(Context.User.Identity.Name + ":" + message);
+            Clients.Caller.message("You", message);
+            Clients.Others.message(Context.User.Identity.Name, message);
         }
     }
 }
