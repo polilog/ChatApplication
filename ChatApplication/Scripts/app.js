@@ -6,7 +6,12 @@ $.connection.hub.start(function () {
             hub.server.send($('#username').val(), $("#txt").val());
             $("#txt").val("");
         }
-    })
+    });
+    $("#txt").keyup(function (event) {
+        if (event.keyCode === 13) {
+            $("#send").click();
+        }
+    });
 })
 
 hub.client.addMessage = function (name, message) {
