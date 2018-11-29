@@ -19,7 +19,7 @@ hub.client.addMessage = function (name, message) {
         name = "You";
     }
     var time = new Date().toLocaleTimeString();
-    $("#message").append('<p><b>' + time + ' ' + htmlEncode(name)
+    $("#message").append('<p>' + time + '<b> ' + htmlEncode(name)
         + '</b>: ' + htmlEncode(message) + '</p>')
 }
 
