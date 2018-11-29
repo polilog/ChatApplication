@@ -44,9 +44,20 @@ namespace ChatApplication.Hubs
             return base.OnDisconnected(stopCalled);
         }
 
-        public void Send(string name, string message)
+        public void Send(string name, string message, string toUser)
         {
-            Clients.All.addMessage(name, message);
+            if (toUser == "")
+            {
+                Clients.All.addMessage(name, message);
+            }
+            else
+            {
+                var userConnections = Connections.Where(c => c.Name == toUser || c.Name == name).Select(c => c.ConnectionId);
+                foreach (var connection in userConnections)
+                {
+                    Clients.Client(connection).addPrivateMessage(name, message, toUser);
+                }
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ If the packages are missed in Visual Studio, enable package restore by selecting
 
 ## Description
 Application has the following functionality: user can login with username and password or create new account. After authentication, user can change his password.
-After entering chat room, user can see list of users who are currently online and send messages to all this users.
+After entering chat room, user can see list of users who are currently online and send messages.
+If option "All" is selected message will be sent to all online users. Otherwise only selected user will receive private message.
 
 Since the application uses ASP.NET MVC 5 framework, it uses OOP and Design Patterns out of the box.
